@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading Screen</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    overflow: hidden;
+  }
+  #loader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #0d0d0d, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+  }
+  #particles {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: moveParticles linear infinite;
+  }
+  @keyframes moveParticles {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+    50% { transform: translateY(-50px) translateX(20px) scale(1.5); opacity: 1; }
+    100% { transform: translateY(-100px) translateX(-20px) scale(1); opacity: 0.7; }
+  }
+  .spinner {
+    width: 80px;
+    height: 80px;
+    border: 6px solid rgba(255,255,255,0.1);
+    border-top: 6px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 30px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loading-text {
+    font-size: 1.5em;
+    color: #fff;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards 0.5s;
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .progress-container {
+    width: 200px;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50px;
+    animation: load 5s linear forwards;
+  }
+  @keyframes load {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+  .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div id="particles"></div>
+  <div class="spinner"></div>
+  <div class="loading-text">LOADING...</div>
+  <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+
+<script>
+  // Generate particles
+  const particlesContainer = document.getElementById('particles');
+  const numParticles = 80;
+  for (let i = 0; i < numParticles; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    p.style.top = Math.random() * window.innerHeight + 'px';
+    p.style.left = Math.random() * window.innerWidth + 'px';
+    p.style.animationDuration = (Math.random() * 4 + 2) + 's';
+    p.style.opacity = Math.random();
+    p.style.width = p.style.height = Math.random() * 3 + 2 + 'px';
+    particlesContainer.appendChild(p);
+  }
+
+  // Simulate loading completion & redirect
+  window.addEventListener('load', () => {
+    // Optional delay to match progress bar
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      loader.classList.add('fade-out');
+      setTimeout(() => {
+        // Redirect to another page after fade-out
+        window.location.href = "space.html"; // <- Replace with your page
+      }, 1000); // fade-out duration
+    }, 5000); // Wait 5 seconds for loading animation
+  });
+</script>
+
+</body>
+</html>
