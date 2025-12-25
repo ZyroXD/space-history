@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Exploration</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #000000, #111111);
+    color: #fff;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+     background: url('back.jpg') no-repeat center center;
+  background-size: cover; 
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('your-background.gif') center/cover no-repeat;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
+  .hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+.h {
+
+    text-align: center;
+}
+.divider{
+  width:160px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#fff,transparent);
+  margin:2rem auto 4rem auto;
+}
+  .search-bar {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 600px;
+    margin: 10px auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50px;
+    padding: 10px 20px;
+    backdrop-filter: blur(50%);
+  }
+  .search-bar img { width: 40px; height: 40px; margin-right: 10px; border-radius: 50px; }
+  .search-bar input { flex: 1; border: none; background: transparent; outline: none; color: #fff; font-size: 1em; }
+  .search-bar button { border: none; background: #fff; padding: 8px 16px; border-radius: 25px; cursor: pointer; transition: 0.3s; }
+  .search-bar button:hover { background: #ccc; }
+
+  .hero-buttons { margin-top: 20px; }
+  .hero-buttons button { margin: 0 10px; padding: 12px 25px; font-size: 1em; border-radius: 25px; border: 2px solid #fff; cursor: pointer; transition: 0.4s; }
+  .btn-white { background: #fff; color: #000; }
+  .btn-white:hover { transform: translateY(-5px); }
+  .btn-trans { background: transparent; color: #fff; }
+  .btn-trans:hover { background: rgba(255,255,255,0.1); }
+
+  .content { padding: 80px 10%; max-width: 1200px; margin: auto; }
+  .content h2 { font-size: 2em; margin-bottom: 20px; text-align: center; color: #fff; text-shadow: 0 0 5px #fff; }
+  .content p { line-height: 1.8; margin-bottom: 20px; color: #ddd; }
+
+  .timeline { position: relative; margin: 50px 0; padding: 20px 0; }
+  .timeline::after { content: ''; position: absolute; width: 4px; background: #fff; top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+  .event { padding: 20px 40px; position: relative; width: 50%; opacity: 0; transform: translateY(50px); transition: all 0.7s ease; }
+  .event.left { left: 0; }
+  .event.right { left: 50%; }
+  .event::after { content: ''; position: absolute; width: 20px; height: 20px; background: #fff; border-radius: 50%; top: 20px; right: -20px; }
+  .event.right::after { left: -10px; }
+  .event.visible { opacity: 1; transform: translateY(0); }
+  .satellites { margin-top: 500px; text-align: center; }
+  .satellites h3 { font-size: 1.5em; margin-bottom: 20px; color: #fff; }
+  .satellites p { color: #ddd; line-height: 1.6; }
+
+  @media screen and (max-width: 768px) {
+    .event { width: 100%; left: 0 !important; margin-bottom: 30px; }
+    .event::after { left: 50%; margin-left: -10px; }
+  }
+  #answerBox {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 1em;
+  background: rgba(255,255,255,0.1);
+  padding: 10px 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  max-width: 600px;
+  text-align: left;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>Welcome to Space Odyssey</h1>
+  <div class="search-bar">
+    <img src="your-logo.png" alt="Logo">
+    <input type="text" id="searchInput" placeholder="Ask about space...">
+    <button onclick="searchQuery()"><b>Search</b></button>
+  </div>
+  <div class="hero-buttons">
+    <button class="btn-white" onclick="scrollToContent()"><b>Explore History</b></button>
+    <button class="btn-trans" onclick="window.location.href='otherpage.html'"><b>Learn More</b></button>
+  </div>
+</section>
+
+<section class="content" id="content">
+  <h2>Detailed Space Exploration History</h2>
+
+  <p>Human curiosity about the skies dates back millennia, from early astronomers charting stars to the invention of telescopes. Observations of the Moon, planets, and comets laid the foundation for modern astronomy.</p>
+
+  <p>The modern space age began with the launch of <strong>Sputnik 1</strong> in 1957, the first artificial satellite orbiting Earth. This event sparked international interest and the space race, pushing technology forward at an unprecedented pace.</p>
+
+  <p>In 1961, <strong>Yuri Gagarin</strong> became the first human in space, orbiting Earth aboard Vostok 1. Apollo 11 in 1969 marked a historic milestone with humans landing on the Moon. Over the following decades, satellites, space stations, and interplanetary missions explored Mars, Venus, and beyond.</p>
+
+  <p>The Hubble Space Telescope, launched in 1990, revolutionized our view of galaxies, nebulae, and cosmic phenomena. Mars rovers such as Spirit, Opportunity, Curiosity, and Perseverance uncovered evidence of water and potential signs of life, expanding our understanding of the solar system.</p>
+
+  <p>Recently, the James Webb Space Telescope has opened a new window into the early universe, observing the formation of galaxies and stars billions of years ago. Modern missions continue to explore Mars, asteroids, and deep space, combining AI, robotics, and human ingenuity.</p>
+    <div class="divider"></div>
+  <h3 class="h">Early Observations of the Sky</h3>
+  <p>Long before rockets and satellites, humans observed stars, planets, and comets. Ancient civilizations charted celestial bodies for navigation, timekeeping, and agriculture. Galileo’s telescope in the 17th century revealed moons of Jupiter, Saturn’s rings, and countless stars, forming the foundation of modern astronomy.</p>
+   <div class="divider"></div>
+  <h3 class="h">The Dawn of the Space Age</h3>
+  <p>The space age began with <strong>Sputnik 1</strong> in 1957, the first artificial satellite to orbit Earth. This achievement spurred the space race and international scientific progress. Shortly after, <strong>Explorer 1</strong> detected the Van Allen radiation belts, expanding our understanding of Earth's magnetic environment.</p>
+   <div class="divider"></div>
+  <h3 class="h">Human Spaceflight Milestones</h3>
+  <p>In 1961, <strong>Yuri Gagarin</strong> became the first human in space. Apollo 11 in 1969 landed Neil Armstrong and Buzz Aldrin on the Moon. Subsequent Apollo missions returned lunar samples and conducted experiments, greatly increasing knowledge about lunar geology and conditions for humans in space.</p>
+   <div class="divider"></div>
+  <h3 class="h">Space Stations and Extended Missions</h3>
+  <p>Space stations like <strong>Salyut</strong>, <strong>Skylab</strong>, <strong>Mir</strong>, and the <strong>International Space Station (ISS)</strong> allowed long-term human presence in space, enabling scientific experiments and studying effects of microgravity on humans. These stations laid the groundwork for future deep-space exploration.</p>
+   <div class="divider"></div>
+  <h3 class="h">Robotic Exploration of the Solar System</h3>
+  <p>Robotic missions expanded knowledge of planets and moons. <strong>Mariner</strong> spacecraft explored Mars and Venus, while <strong>Voyager 1 & 2</strong> studied outer planets. Mars rovers—<strong>Spirit, Opportunity, Curiosity, Perseverance</strong>—discovered evidence of water, studied soil composition, and searched for signs of past life. <strong>Cassini-Huygens</strong> explored Saturn’s rings and moons in detail.</p>
+   <div class="divider"></div>
+  <h3 class="h">Modern Space Telescopes</h3>
+  <p>Telescopes like <strong>Hubble</strong>, <strong>Kepler</strong>, <strong>TESS</strong>, and <strong>James Webb (JWST)</strong> revealed distant galaxies, exoplanets, and star formations. JWST now allows observation of the early universe, pushing the limits of human knowledge further than ever.</p>
+<div class="time">
+  <div class="timeline">
+    <div class="event left"><div><h3>1957 - Sputnik 1</h3><p>First artificial satellite orbiting Earth.</p></div></div>
+    <div class="event right"><div><h3>1961 - Yuri Gagarin</h3><p>First human in space.</p></div></div>
+    <div class="event left"><div><h3>1969 - Moon Landing</h3><p>Apollo 11, humans walked on the Moon.</p></div></div>
+    <div class="event right"><div><h3>1990 - Hubble Telescope</h3><p>Captured breathtaking images of galaxies and stars.</p></div></div>
+    <div class="event left"><div><h3>2004 - Mars Rovers</h3><p>Spirit & Opportunity explored Martian surface.</p></div></div>
+    <div class="event right"><div><h3>2021 - James Webb Telescope</h3><p>Infrared observations of the earliest galaxies.</p></div></div>
+  </div>
+</div>
+  <div class="satellites">
+    <h3>Notable Satellites</h3>
+    <p>Some key satellites and observatories that have advanced our knowledge include:
+<ul>
+<li>Sputnik 1 – First artificial satellite (1957)</li>
+<br>
+<li>Explorer 1 – Discovery of Van Allen belts (1958)</li>
+<br>
+<li>Hubble Space Telescope – High-resolution cosmic imaging (1990)</li>
+<br>
+<li>Landsat series – Earth observation and mapping</li>
+<br>
+<li>GPS satellites – Global positioning and navigation</li>
+<br>
+<li>GOES satellites – Weather and environmental monitoring</li>
+<br>
+<li>TESS (Transiting Exoplanet Survey Satellite) – Exoplanet discovery</li>
+<br>
+<li>James Webb Space Telescope (JWST) – Infrared observations of early universe</li>
+<br>
+<li>Chandra X-ray Observatory – Observing black holes and high-energy phenomena</li>
+<br>
+<li>Rosetta spacecraft – Studied comet 67P/Churyumov-Gerasimenko</li>
+</ul></p>
+  </div>
+</section>
+
+<script>
+function scrollToContent() {
+  document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
+}
+
+function searchQuery() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  let answer = "No results found.";
+  if(query.includes('moon')) answer = "The Moon landing in 1969 was Apollo 11's historic mission.";
+  else if(query.includes('sputnik')) answer = "Sputnik 1, launched in 1957, was the first artificial satellite.";
+  else if(query.includes('gagarin')) answer = "Yuri Gagarin became the first human in space in 1961.";
+  else if(query.includes('mars')) answer = "Mars exploration includes rovers Spirit, Opportunity, Curiosity, and Perseverance.";
+  else if(query.includes('hubble')) answer = "Hubble Space Telescope launched in 1990, revealing galaxies and nebulae.";
+  else if(query.includes('jwst')) answer = "James Webb Space Telescope launched in 2021 for infrared observations.";
+  alert(answer);
+}
+// AI-style search
+function searchQuery() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  let answer = "Sorry, I couldn't find information about that.";
+  if(query.includes('moon')) answer = "Apollo 11 (1969) landed humans on the Moon. Neil Armstrong and Buzz Aldrin walked its surface.";
+  else if(query.includes('sputnik')) answer = "Sputnik 1, launched in 1957, was the first artificial satellite in orbit.";
+  else if(query.includes('gagarin')) answer = "Yuri Gagarin became the first human in space in 1961 aboard Vostok 1.";
+  else if(query.includes('mars')) answer = "Mars has been explored by rovers like Spirit, Opportunity, Curiosity, and Perseverance.";
+  else if(query.includes('hubble')) answer = "Hubble Space Telescope launched in 1990, providing high-resolution images of space.";
+  else if(query.includes('jwst')) answer = "James Webb Space Telescope (2021) observes the earliest galaxies in infrared.";
+
+  document.getElementById('answerBox').innerText = answer;
+}
+
+
+const events = document.querySelectorAll('.event');
+const revealTimeline = () => {
+  const windowHeight = window.innerHeight;
+  events.forEach(event => {
+    const elementTop = event.getBoundingClientRect().top;
+    if(elementTop < windowHeight - 100) event.classList.add('visible');
+  });
+}
+window.addEventListener('scroll', revealTimeline);
+window.addEventListener('load', revealTimeline);
+</script>
+
+</body>
+</html>
